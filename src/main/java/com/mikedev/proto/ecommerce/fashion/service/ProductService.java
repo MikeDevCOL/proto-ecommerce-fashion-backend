@@ -52,8 +52,8 @@ public class ProductService {
   @Transactional
   public ProductResponse createNewProduct(ProductRequest request) {
 
-    if (request.getMainImgUrl() == null) {
-      request.withMainImgUrl("https://placehold.co/600x600");
+    if (request.getMainImgUrl() == null || request.getMainImgUrl().isEmpty()) {
+      request = request.withMainImgUrl("https://placehold.co/600x600");
     }
 
     var productEntity = Product.builder()

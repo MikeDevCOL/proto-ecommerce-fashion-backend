@@ -20,6 +20,7 @@ import com.mikedev.proto.ecommerce.fashion.dtos.response.ProductResponse;
 import com.mikedev.proto.ecommerce.fashion.dtos.response.ProductSummaryResponse;
 import com.mikedev.proto.ecommerce.fashion.service.ProductService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -48,7 +49,7 @@ public class ProductController {
   }
 
   @PostMapping
-  public ResponseEntity<ProductResponse> createNewProduct(@RequestBody ProductRequest request) {
+  public ResponseEntity<ProductResponse> createNewProduct(@Valid @RequestBody ProductRequest request) {
     return ResponseEntity.status(HttpStatus.CREATED).body(service.createNewProduct(request));
   }
 }
